@@ -153,19 +153,15 @@ class Crawler
     #----------------------------------------------------------------
     def page_info
       @arr.each do |movie_name|
-        puts "look ma no hands"
         results = forms(movie_name)
         final_page = results.link_with(text: movie_name)
 
-        puts "pre page present"
         if final_page.present?
-        puts "past page present"
           final_page = results.link_with(text: movie_name).click
           # title of movie
           title = title_of_movie(final_page)
 
           unless title.blank?
-            puts "passed title blank " + "#{@arr[0][0]}"
 
             # actors of movie
             actor = actor_of_movie(final_page)
@@ -184,8 +180,6 @@ class Crawler
             # rating
             rating = rating_of_movie(final_page)
 
-            puts "i got out alive"
-
             film = @Movie.new(title, year, actor, poster, dir, genre, duration, byline, rating)
             ap "#{film}" + " count is " + @elements.count.to_s
             # populate array
@@ -193,15 +187,12 @@ class Crawler
             ap "new count is " + @elements.count.to_s
           end
         end
-        puts "<-----skipped the shiznit"
       end
     end
 
     def results
-      puts "enterd the twighlight zone"
       while @elements.length > 0
         db_count = Movie.all.count
-        puts "there are " + "#{@elements.count}" + " movies, the db has " + "#{db_count}" + " movies"
         @elements.each do |name|
           my_movie = Movie.find_or_create_by(title: name.title)
           binding.pry
@@ -212,7 +203,6 @@ class Crawler
           my_movie.update(rating: name.rating)
           db_count = Movie.all.count
 
-          puts "there are now " + "#{db_count}" + " movies"
           # movie actors join
           if name[2].class == String
             my_movie.actors.find_or_create_by(name: name[2])
@@ -246,7 +236,6 @@ class Crawler
 
           # remove last elemnt of the array.
           @elements.shift
-          puts "there are now #{@elements.count} movies in the arry "
         end
 
       end
