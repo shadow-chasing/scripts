@@ -1,0 +1,10 @@
+<% editable_attributes.each do |attribute| -%>
+<main>
+  <%= attribute.human_name.titleize %>:
+  <%= "<%= @#{singular_name}.#{attribute.name} %%>" %>
+</main>
+<% end -%>
+
+<div class="link-button link-button--info">
+  <%= "<%= link_to 'Back', #{plural_name}_path %%>" %>
+</div>

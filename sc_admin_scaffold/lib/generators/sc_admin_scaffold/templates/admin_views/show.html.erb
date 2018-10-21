@@ -1,0 +1,15 @@
+<div>
+<% editable_attributes.each do |attribute| -%>
+  <dl class="row">
+    <dt class="col-sm-3"><%= attribute.human_name.titleize %>:</dt>
+    <dd class="col-sm-9"><%= "<%= @#{singular_name}.#{attribute.name} %%>" %></dd>
+  </dl>
+<% end -%>
+</div>
+
+<div class="link-button link-button--info">
+  <%= "<%= link_to 'Edit', edit_admin_#{singular_name}_path(@#{singular_name}) %%>" %>
+</div>
+<div class="link-button link-button--info">
+  <%= "<%= link_to 'Back', admin_#{plural_name}_path %%>" %>
+</div>

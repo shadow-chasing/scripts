@@ -1,0 +1,33 @@
+<%= "<%= render 'admin/partials/aside' %%>" %>
+<header class="admin <%= human_name.downcase %>-index-header">
+  <h1>Listing <%= plural_table_name.titleize %></h1>
+</header>
+
+<br>
+<main class="admin">
+  <table class="table">
+    <thead>
+      <tr>
+      <% editable_attributes.each do |attribute| -%>
+    <th><%= attribute.human_name %></th>
+      <% end -%>
+      <th>show</th>
+      <th>edit</th>
+      <th>delete</th>
+  </tr>
+    </thead>
+    <tbody>
+      <%= "<% @#{plural_name}.each do |#{singular_name}| %%>" %>
+      <tr>
+          <% editable_attributes.reject(&:password_digest?).each do |attribute| -%>                 
+            <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+          <% end -%>
+            <td><%= "<%= link_to 'Show', admin_#{singular_name}_path(#{singular_name}), class: '' %%>" %></td>
+            <td><%= "<%= link_to 'Edit', edit_admin_#{singular_name}_path(#{singular_name}), class: '' %%>" %></td>
+            <td><%= "<%= link_to 'Delete', admin_#{singular_name}_path(#{singular_name}), method: :delete, data: { confirm: 'Are you sure?' }, class: '' %%>" %></td>
+      </tr>
+      <%= "<% end %%>" %>
+    </tbody>
+  </table>
+
+</main>

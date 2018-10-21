@@ -1,0 +1,85 @@
+//------------------------------------------------------------------------------
+// admin dashboard
+//------------------------------------------------------------------------------
+
+/* aside */
+
+.container-admin{
+  background-color: color(greyscale-color);
+}
+
+aside.admin{
+  background-color: rgb(12, 39, 66);
+  border-left: 2px solid color(greyscale-color, dark);
+  border-top: 2px solid color(greyscale-color, dark);
+}
+
+aside.admin > ul{
+  padding: 0;
+}
+
+aside.admin > ul > li{
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  padding-left: 1rem;
+  align-items: center;
+  display: inline-flex;
+  //justify-items: center;
+  border-left: 1px solid color(greyscale-color, dark);
+  border-right: 1px solid color(greyscale-color, dark);
+  background-color: rgb(19, 61, 103);
+  border-top: 1px solid rgb(15, 48, 81);
+}
+
+aside.admin > ul > li > i.material-icons{
+  // NOTE padding needs mq
+  color: color(blue-color, light);
+}
+
+aside.admin > ul > li > a{
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+}
+
+
+/*  main */
+
+main.admin{
+  background-color: white;
+}
+
+/*  top-pannel */
+
+.admin-pannel-item{
+  padding: .5rem;
+  align-items: center;
+  display: inline-flex;
+  background-color: #0c2742;
+  @include span(9 no-gutters);
+  border-top: 2px solid color(greyscale-color, dark);
+  border-right: 2px solid color(greyscale-color, dark);
+  border-left: 1px solid color(greyscale-color, dark);
+}
+
+.admin-pannel-item > p.welcome{
+  padding: 0 .5rem;
+  font-weight: 100;
+}
+
+.admin-pannel-item > p.last-sign-in{
+  font-size: .8rem;
+  color:color(greyscale-color);
+}
+
+.admin-pannel-item > i{
+  color:color(greyscale-color);
+}
+
+.user-image{
+  height: 5rem;
+  width: 5rem;
+  border: .4rem solid #071624;
+  border-radius: 50%;
+}
